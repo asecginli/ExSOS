@@ -1,0 +1,1019 @@
+2017-11-06T00:01:18.3209757+03:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T00:01:18.5559389+03:00  [INF] Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T00:01:18.5606436+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T00:01:18.5657603+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-06T00:01:18.5737446+03:00  [INF] Applying migration '"20171105205947_Questions"'. (0e2ac64d)
+2017-11-06T00:01:18.6605883+03:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [QuestionsTB] (
+    [questionID] int NOT NULL IDENTITY,
+    [CreatedBy] nvarchar(256) NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(256) NULL,
+    [UpdatedDate] datetime2 NOT NULL,
+    [isActive] bit NOT NULL,
+    [questionAuthorID] nvarchar(450) NULL,
+    [questionContent] nvarchar(4000) NOT NULL,
+    [questionDegree] int NOT NULL,
+    CONSTRAINT [PK_QuestionsTB] PRIMARY KEY ([questionID]),
+    CONSTRAINT [FK_QuestionsTB_AspNetUsers_questionAuthorID] FOREIGN KEY ([questionAuthorID]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2017-11-06T00:01:18.6664030+03:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [QuestionOptionsTB] (
+    [questionOptionID] int NOT NULL IDENTITY,
+    [CreatedBy] nvarchar(256) NULL,
+    [CreatedDate] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(256) NULL,
+    [UpdatedDate] datetime2 NOT NULL,
+    [isTrue] bit NOT NULL,
+    [optionContent] nvarchar(max) NOT NULL,
+    [questionID] int NOT NULL,
+    CONSTRAINT [PK_QuestionOptionsTB] PRIMARY KEY ([questionOptionID]),
+    CONSTRAINT [FK_QuestionOptionsTB_QuestionsTB_questionID] FOREIGN KEY ([questionID]) REFERENCES [QuestionsTB] ([questionID]) ON DELETE CASCADE
+);" (0723d8ff)
+2017-11-06T00:01:18.6720955+03:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_QuestionOptionsTB_questionID] ON [QuestionOptionsTB] ([questionID]);" (0723d8ff)
+2017-11-06T00:01:18.6738408+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_QuestionsTB_questionAuthorID] ON [QuestionsTB] ([questionAuthorID]);" (0723d8ff)
+2017-11-06T00:01:18.6766832+03:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20171105205947_Questions', N'2.0.0-rtm-26452');" (0723d8ff)
+2017-11-06T12:12:04.4410590+03:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T12:12:04.7869707+03:00  [INF] Executed DbCommand ("21"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T12:12:04.7934730+03:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-06T12:31:08.8872936+03:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T12:31:09.1029685+03:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T12:31:09.1069958+03:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T12:31:09.1103191+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-06T12:31:09.1345101+03:00  [INF] Reverting migration '"20171105205947_Questions"'. (897b81a1)
+2017-11-06T12:31:09.3263464+03:00  [ERR] Failed executing DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""DROP TABLE [QuestionOptionsTB];" (627a98df)
+System.Data.SqlClient.SqlException (0x80131904): Cannot drop the table 'QuestionOptionsTB', because it does not exist or you do not have permission.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.Design.Internal.MigrationsOperations.UpdateDatabase(String targetMigration, String contextType)
+   at Microsoft.EntityFrameworkCore.Design.OperationExecutor.UpdateDatabase.<>c__DisplayClass0_1.<.ctor>b__0()
+   at Microsoft.EntityFrameworkCore.Design.OperationExecutor.OperationBase.Execute(Action action)
+ClientConnectionId:8828fcfb-6296-4342-b7df-00489b45d3a4
+Error Number:3701,State:5,Class:11
+2017-11-06T15:53:29.1664673+03:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:53:29.4081432+03:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T15:53:29.4121335+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T15:53:29.4189468+03:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-06T15:53:29.4363441+03:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2017-11-06T15:53:29.5701760+03:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T15:53:29.5910577+03:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppCustomers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T15:53:31.2971253+03:00 0HL952LH0LD33:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (ca22a1cb)
+2017-11-06T15:53:31.5974845+03:00 0HL952LH0LD33:00000001 [INF] Executing action method "IntAppTech.Controllers.HomeController.Index (IntAppTech)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:53:36.8958624+03:00 0HL952LH0LD33:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-11-06T15:53:37.5315045+03:00 0HL952LH0LD33:00000001 [INF] Executed action "IntAppTech.Controllers.HomeController.Index (IntAppTech)" in 5942.6668ms (afa2e885)
+2017-11-06T15:53:37.5358505+03:00 0HL952LH0LD33:00000001 [INF] Request finished in 6242.2824ms 200 text/html; charset=utf-8 (791a596a)
+2017-11-06T15:53:37.6760467+03:00 0HL952LH0LD32:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/main-client.js?v=56k3rXGzm5l9KqvufqhUhTZocbydgcovuUe2NhiD6k8   (ca22a1cb)
+2017-11-06T15:53:37.6760467+03:00 0HL952LH0LD33:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/vendor.css?v=LJsqxV_NbY9Jue4BV9O_SDiaBzkzvWqvBnuuj3UwSNA   (ca22a1cb)
+2017-11-06T15:53:37.6761247+03:00 0HL952LH0LD31:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/vendor.js?v=lfUosEDWx0SPIsR7pMLTtKyS2gn0noolsFOWk-a1sFo   (ca22a1cb)
+2017-11-06T15:54:16.3594778+03:00  [INF] webpack built ee4c7fc6de188ec5190e in 48047ms (1fc1621e)
+2017-11-06T15:54:17.2446975+03:00 0HL952LH0LD32:00000001 [INF] Request finished in 39568.6127ms 200 application/javascript; charset=UTF-8 (791a596a)
+2017-11-06T15:54:17.2461247+03:00 0HL952LH0LD31:00000001 [INF] The file "/dist/vendor.js" was not modified (f1f8d725)
+2017-11-06T15:54:17.2469390+03:00 0HL952LH0LD33:00000002 [INF] The file "/dist/vendor.css" was not modified (f1f8d725)
+2017-11-06T15:54:17.2490502+03:00 0HL952LH0LD33:00000002 [INF] Request finished in 39573.2327ms 304 text/css (791a596a)
+2017-11-06T15:54:17.2490579+03:00 0HL952LH0LD31:00000001 [INF] Request finished in 39573.2327ms 304 application/javascript (791a596a)
+2017-11-06T15:54:23.5775943+03:00 0HL952LH0LD32:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/concatAll.js.map   (ca22a1cb)
+2017-11-06T15:54:23.5781593+03:00 0HL952LH0LD33:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/main-client.js.map   (ca22a1cb)
+2017-11-06T15:54:24.0524717+03:00 0HL952LH0LD31:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/e10af218b941826ea360d7554688d721.png   (ca22a1cb)
+2017-11-06T15:54:24.1770102+03:00 0HL952LH0LD34:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/__webpack_hmr   (ca22a1cb)
+2017-11-06T15:54:26.8684096+03:00 0HL952LH0LD31:00000002 [INF] Request finished in 2815.9441ms 200 image/png; charset=UTF-8 (791a596a)
+2017-11-06T15:54:26.8746395+03:00 0HL952LH0LD32:00000002 [INF] Request finished in 3297.0738ms 404  (791a596a)
+2017-11-06T15:54:26.9353232+03:00 0HL952LH0LD33:00000003 [INF] Request finished in 3357.1422ms 200 application/json; charset=UTF-8 (791a596a)
+2017-11-06T15:54:39.1977369+03:00 0HL952LH0LD31:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/account/roles   (ca22a1cb)
+2017-11-06T15:54:39.1977369+03:00 0HL952LH0LD33:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/account/users/me   (ca22a1cb)
+2017-11-06T15:54:39.2121578+03:00 0HL952LH0LD31:00000003 [INF] "Bearer" was not authenticated. Failure message: "Authentication failed because the access token was expired." (48071232)
+2017-11-06T15:54:39.2121583+03:00 0HL952LH0LD33:00000004 [INF] "Bearer" was not authenticated. Failure message: "Authentication failed because the access token was expired." (48071232)
+2017-11-06T15:54:39.2465275+03:00 0HL952LH0LD33:00000004 [INF] Authorization failed for user: null. (a4ab1676)
+2017-11-06T15:54:39.2465275+03:00 0HL952LH0LD31:00000003 [INF] Authorization failed for user: null. (a4ab1676)
+2017-11-06T15:54:39.2519767+03:00 0HL952LH0LD31:00000003 [INF] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'. (8b6446cb)
+2017-11-06T15:54:39.2519767+03:00 0HL952LH0LD33:00000004 [INF] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'. (8b6446cb)
+2017-11-06T15:54:39.2576067+03:00 0HL952LH0LD31:00000003 [INF] Executing ChallengeResult with authentication schemes ([]). (f3dca807)
+2017-11-06T15:54:39.2575784+03:00 0HL952LH0LD33:00000004 [INF] Executing ChallengeResult with authentication schemes ([]). (f3dca807)
+2017-11-06T15:54:39.2749269+03:00 0HL952LH0LD31:00000003 [INF] AuthenticationScheme: "Bearer" was challenged. (d45f1f38)
+2017-11-06T15:54:39.2749269+03:00 0HL952LH0LD33:00000004 [INF] AuthenticationScheme: "Bearer" was challenged. (d45f1f38)
+2017-11-06T15:54:39.2750691+03:00 0HL952LH0LD33:00000004 [INF] Executed action "IntAppTech.Controllers.AccountController.GetCurrentUser (IntAppTech)" in 46.2185ms (afa2e885)
+2017-11-06T15:54:39.2750680+03:00 0HL952LH0LD31:00000003 [INF] Executed action "IntAppTech.Controllers.AccountController.GetRoles (IntAppTech)" in 46.2185ms (afa2e885)
+2017-11-06T15:54:39.2752112+03:00 0HL952LH0LD33:00000004 [INF] Request finished in 77.5472ms 401  (791a596a)
+2017-11-06T15:54:39.2752122+03:00 0HL952LH0LD31:00000003 [INF] Request finished in 77.5097ms 401  (791a596a)
+2017-11-06T15:54:39.2857178+03:00 0HL952LH0LD31:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/token application/x-www-form-urlencoded 2093 (ca22a1cb)
+2017-11-06T15:54:39.2870438+03:00 0HL952LH0LD31:00000004 [INF] Policy execution successful. (0204925d)
+2017-11-06T15:54:39.3974997+03:00 0HL952LH0LD31:00000004 [INF] The token request was successfully extracted from the HTTP request: "{
+  \"refresh_token\": \"[removed for security reasons]\",
+  \"grant_type\": \"refresh_token\",
+  \"scope\": \"openid email phone profile offline_access roles\"
+}". (ebc01284)
+2017-11-06T15:54:39.4138418+03:00 0HL952LH0LD31:00000004 [INF] The token request was successfully validated. (d7e51e65)
+2017-11-06T15:54:39.4650843+03:00 0HL952LH0LD31:00000004 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:54:39.5906497+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("59"ms) [Parameters=["@__key_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [token].[Id], [token].[ApplicationId], [token].[AuthorizationId], [token].[Ciphertext], [token].[End], [token].[Hash], [token].[Start], [token].[Status], [token].[Subject], [token].[Type]
+FROM [OpenIddictTokens] AS [token]
+WHERE [token].[Id] = @__key_0" (0723d8ff)
+2017-11-06T15:54:39.6997718+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("10"ms) [Parameters=["@p9='?' (Size = 450), @p0='?' (Size = 450), @p1='?' (Size = 450), @p2='?' (Size = 4000), @p3='?', @p4='?' (Size = 450), @p5='?', @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [OpenIddictTokens] SET [ApplicationId] = @p0, [AuthorizationId] = @p1, [Ciphertext] = @p2, [End] = @p3, [Hash] = @p4, [Start] = @p5, [Status] = @p6, [Subject] = @p7, [Type] = @p8
+WHERE [Id] = @p9;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2017-11-06T15:54:39.7431383+03:00 0HL952LH0LD31:00000004 [INF] Executing action method "IntAppTech.Controllers.AuthorizationController.Exchange (IntAppTech)" with arguments (["{
+  \"refresh_token\": \"[removed for security reasons]\",
+  \"grant_type\": \"refresh_token\",
+  \"scope\": \"openid email phone profile offline_access roles\"
+}"]) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:54:39.7555917+03:00 0HL952LH0LD31:00000004 [INF] AuthenticationScheme: "ASOS" was successfully authenticated. (1805f3b3)
+2017-11-06T15:54:39.7870040+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("4"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:54:39.8502837+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2017-11-06T15:54:39.8935070+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T15:54:39.9079526+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2017-11-06T15:54:39.9356295+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("3"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2017-11-06T15:54:39.9385191+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2017-11-06T15:54:39.9397666+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2017-11-06T15:54:39.9405744+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2017-11-06T15:54:39.9414965+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2017-11-06T15:54:39.9512512+03:00 0HL952LH0LD31:00000004 [INF] Executing SignInResult with authentication scheme ("ASOS") and the following principal: "System.Security.Claims.ClaimsPrincipal". (f8bf0a82)
+2017-11-06T15:54:40.0568828+03:00 0HL952LH0LD31:00000004 [INF] Executed DbCommand ("4"ms) [Parameters=["@p0='?' (Size = 450), @p1='?' (Size = 450), @p2='?' (Size = 450), @p3='?' (Size = 4000), @p4='?', @p5='?' (Size = 450), @p6='?', @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [OpenIddictTokens] ([Id], [ApplicationId], [AuthorizationId], [Ciphertext], [End], [Hash], [Start], [Status], [Subject], [Type])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);" (0723d8ff)
+2017-11-06T15:54:40.0936849+03:00 0HL952LH0LD31:00000004 [INF] The token response was successfully returned: "{
+  \"token_type\": \"Bearer\",
+  \"access_token\": \"[removed for security reasons]\",
+  \"expires_in\": 3599,
+  \"refresh_token\": \"[removed for security reasons]\",
+  \"id_token\": \"[removed for security reasons]\"
+}". (12d98310)
+2017-11-06T15:54:40.1151930+03:00 0HL952LH0LD31:00000004 [INF] Executed action "IntAppTech.Controllers.AuthorizationController.Exchange (IntAppTech)" in 389.724ms (afa2e885)
+2017-11-06T15:54:40.1165262+03:00 0HL952LH0LD31:00000004 [INF] Request finished in 830.7961ms 200 application/json;charset=UTF-8 (791a596a)
+2017-11-06T15:54:40.1293718+03:00 0HL952LH0LD31:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/account/users/me   (ca22a1cb)
+2017-11-06T15:54:40.1323163+03:00 0HL952LH0LD31:00000005 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:54:40.1352685+03:00 0HL952LH0LD31:00000005 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:40.1363636+03:00 0HL952LH0LD31:00000005 [INF] Executing action method "IntAppTech.Controllers.AccountController.GetCurrentUser (IntAppTech)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:54:40.1383080+03:00 0HL952LH0LD33:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/account/roles   (ca22a1cb)
+2017-11-06T15:54:40.1391172+03:00 0HL952LH0LD33:00000005 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:54:40.1394508+03:00 0HL952LH0LD33:00000005 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:40.1405012+03:00 0HL952LH0LD33:00000005 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:40.1409240+03:00 0HL952LH0LD33:00000005 [INF] Executing action method "IntAppTech.Controllers.AccountController.GetRoles (IntAppTech)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:54:40.1435730+03:00 0HL952LH0LD31:00000005 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:54:40.1474017+03:00 0HL952LH0LD33:00000005 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:54:40.1607475+03:00 0HL952LH0LD31:00000005 [INF] Executed DbCommand ("4"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2017-11-06T15:54:40.1635043+03:00 0HL952LH0LD31:00000005 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:40.1660506+03:00 0HL952LH0LD31:00000005 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:40.2213501+03:00 0HL952LH0LD31:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[Id] = @__userId_0
+ORDER BY [u].[Id]" (0723d8ff)
+2017-11-06T15:54:40.2332216+03:00 0HL952LH0LD31:00000005 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Roles].[UserId], [u.Roles].[RoleId]
+FROM [AspNetUserRoles] AS [u.Roles]
+INNER JOIN (
+    SELECT TOP(1) [u0].[Id]
+    FROM [AspNetUsers] AS [u0]
+    WHERE [u0].[Id] = @__userId_0
+    ORDER BY [u0].[Id]
+) AS [t] ON [u.Roles].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2017-11-06T15:54:40.2334008+03:00 0HL952LH0LD33:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+ORDER BY [r].[Name], [r].[Id]" (0723d8ff)
+2017-11-06T15:54:40.2459783+03:00 0HL952LH0LD33:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r.Claims].[Id], [r.Claims].[ClaimType], [r.Claims].[ClaimValue], [r.Claims].[RoleId]
+FROM [AspNetRoleClaims] AS [r.Claims]
+INNER JOIN (
+    SELECT [r0].[Id], [r0].[Name]
+    FROM [AspNetRoles] AS [r0]
+) AS [t] ON [r.Claims].[RoleId] = [t].[Id]
+ORDER BY [t].[Name], [t].[Id]" (0723d8ff)
+2017-11-06T15:54:40.2555828+03:00 0HL952LH0LD31:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r].[Name]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[Id] IN (N'5a7050e2-44e4-402a-a102-c8afdf6b712c', N'8ee8e0a7-7641-4d76-acb7-9bef9c5434f1', N'df48ee34-22b4-406e-b4f0-6f92609caaa7')" (0723d8ff)
+2017-11-06T15:54:40.2805143+03:00 0HL952LH0LD33:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r.Users].[UserId], [r.Users].[RoleId]
+FROM [AspNetUserRoles] AS [r.Users]
+INNER JOIN (
+    SELECT [r1].[Id], [r1].[Name]
+    FROM [AspNetRoles] AS [r1]
+) AS [t0] ON [r.Users].[RoleId] = [t0].[Id]
+ORDER BY [t0].[Name], [t0].[Id]" (0723d8ff)
+2017-11-06T15:54:40.2906118+03:00 0HL952LH0LD31:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2017-11-06T15:54:40.2992699+03:00 0HL952LH0LD31:00000005 [INF] Executed action "IntAppTech.Controllers.AccountController.GetCurrentUser (IntAppTech)" in 165.567ms (afa2e885)
+2017-11-06T15:54:40.2995465+03:00 0HL952LH0LD31:00000005 [INF] Request finished in 170.1906ms 200 application/json; charset=utf-8 (791a596a)
+2017-11-06T15:54:40.3178203+03:00 0HL952LH0LD33:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2017-11-06T15:54:40.3258225+03:00 0HL952LH0LD33:00000005 [INF] Executed action "IntAppTech.Controllers.AccountController.GetRoles (IntAppTech)" in 186.4574ms (afa2e885)
+2017-11-06T15:54:40.3259883+03:00 0HL952LH0LD33:00000005 [INF] Request finished in 187.7593ms 200 application/json; charset=utf-8 (791a596a)
+2017-11-06T15:54:42.2395027+03:00 0HL952LH0LD33:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/account/users   (ca22a1cb)
+2017-11-06T15:54:42.2398728+03:00 0HL952LH0LD31:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/account/roles   (ca22a1cb)
+2017-11-06T15:54:42.2401545+03:00 0HL952LH0LD33:00000006 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:54:42.2402957+03:00 0HL952LH0LD31:00000006 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:54:42.2404835+03:00 0HL952LH0LD31:00000006 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:42.2406662+03:00 0HL952LH0LD31:00000006 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:42.2408862+03:00 0HL952LH0LD31:00000006 [INF] Executing action method "IntAppTech.Controllers.AccountController.GetRoles (IntAppTech)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:54:42.2414446+03:00 0HL952LH0LD31:00000006 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:54:42.2431247+03:00 0HL952LH0LD31:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+ORDER BY [r].[Name], [r].[Id]" (0723d8ff)
+2017-11-06T15:54:42.2441695+03:00 0HL952LH0LD31:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r.Claims].[Id], [r.Claims].[ClaimType], [r.Claims].[ClaimValue], [r.Claims].[RoleId]
+FROM [AspNetRoleClaims] AS [r.Claims]
+INNER JOIN (
+    SELECT [r0].[Id], [r0].[Name]
+    FROM [AspNetRoles] AS [r0]
+) AS [t] ON [r.Claims].[RoleId] = [t].[Id]
+ORDER BY [t].[Name], [t].[Id]" (0723d8ff)
+2017-11-06T15:54:42.2453534+03:00 0HL952LH0LD31:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r.Users].[UserId], [r.Users].[RoleId]
+FROM [AspNetUserRoles] AS [r.Users]
+INNER JOIN (
+    SELECT [r1].[Id], [r1].[Name]
+    FROM [AspNetRoles] AS [r1]
+) AS [t0] ON [r.Users].[RoleId] = [t0].[Id]
+ORDER BY [t0].[Name], [t0].[Id]" (0723d8ff)
+2017-11-06T15:54:42.2478751+03:00 0HL952LH0LD33:00000006 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:42.2480614+03:00 0HL952LH0LD33:00000006 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:42.2480998+03:00 0HL952LH0LD31:00000006 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2017-11-06T15:54:42.2483271+03:00 0HL952LH0LD33:00000006 [INF] Executing action method "IntAppTech.Controllers.AccountController.GetUsers (IntAppTech)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:54:42.2483964+03:00 0HL952LH0LD31:00000006 [INF] Executed action "IntAppTech.Controllers.AccountController.GetRoles (IntAppTech)" in 7.973ms (afa2e885)
+2017-11-06T15:54:42.2486468+03:00 0HL952LH0LD31:00000006 [INF] Request finished in 8.7391ms 200 application/json; charset=utf-8 (791a596a)
+2017-11-06T15:54:42.2569282+03:00 0HL952LH0LD33:00000006 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:54:42.2774312+03:00 0HL952LH0LD33:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+ORDER BY [u].[UserName], [u].[Id]" (0723d8ff)
+2017-11-06T15:54:42.2874553+03:00 0HL952LH0LD33:00000006 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Roles].[UserId], [u.Roles].[RoleId]
+FROM [AspNetUserRoles] AS [u.Roles]
+INNER JOIN (
+    SELECT [u0].[Id], [u0].[UserName]
+    FROM [AspNetUsers] AS [u0]
+) AS [t] ON [u.Roles].[UserId] = [t].[Id]
+ORDER BY [t].[UserName], [t].[Id]" (0723d8ff)
+2017-11-06T15:54:42.2991744+03:00 0HL952LH0LD33:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[Id] IN (N'5a7050e2-44e4-402a-a102-c8afdf6b712c', N'8ee8e0a7-7641-4d76-acb7-9bef9c5434f1', N'df48ee34-22b4-406e-b4f0-6f92609caaa7', N'5a7050e2-44e4-402a-a102-c8afdf6b712c', N'8ee8e0a7-7641-4d76-acb7-9bef9c5434f1', N'df48ee34-22b4-406e-b4f0-6f92609caaa7', N'5a7050e2-44e4-402a-a102-c8afdf6b712c', N'8ee8e0a7-7641-4d76-acb7-9bef9c5434f1', N'df48ee34-22b4-406e-b4f0-6f92609caaa7', N'df48ee34-22b4-406e-b4f0-6f92609caaa7', N'8ee8e0a7-7641-4d76-acb7-9bef9c5434f1')" (0723d8ff)
+2017-11-06T15:54:42.3019670+03:00 0HL952LH0LD33:00000006 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2017-11-06T15:54:42.3037108+03:00 0HL952LH0LD33:00000006 [INF] Executed action "IntAppTech.Controllers.AccountController.GetUsers (IntAppTech)" in 55.9702ms (afa2e885)
+2017-11-06T15:54:42.3038729+03:00 0HL952LH0LD33:00000006 [INF] Request finished in 64.4548ms 200 application/json; charset=utf-8 (791a596a)
+2017-11-06T15:54:51.2291148+03:00 0HL952LH0LD33:00000007 [INF] Request starting HTTP/1.1 PUT http://localhost:5000/api/account/users/ef7b5b8c-dd33-4fd1-ae79-4d268575f885 application/json 474 (ca22a1cb)
+2017-11-06T15:54:51.2293771+03:00 0HL952LH0LD33:00000007 [INF] Policy execution successful. (0204925d)
+2017-11-06T15:54:51.2301257+03:00 0HL952LH0LD33:00000007 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:54:51.2418069+03:00 0HL952LH0LD33:00000007 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:51.3075657+03:00 0HL952LH0LD33:00000007 [INF] Executing action method "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" with arguments (["ef7b5b8c-dd33-4fd1-ae79-4d268575f885", "IntAppTech.ViewModels.UserEditViewModel"]) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:54:51.3159800+03:00 0HL952LH0LD33:00000007 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:54:51.3179485+03:00 0HL952LH0LD33:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:54:51.3206642+03:00 0HL952LH0LD33:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T15:54:51.3215099+03:00 0HL952LH0LD33:00000007 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:51.3227235+03:00 0HL952LH0LD33:00000007 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:51.3469448+03:00 0HL952LH0LD33:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2017-11-06T15:54:51.3636955+03:00 0HL952LH0LD33:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2017-11-06T15:54:51.3840137+03:00 0HL952LH0LD33:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:54:51.3917389+03:00 0HL952LH0LD33:00000007 [INF] Executed action "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" in 149.9632ms (afa2e885)
+2017-11-06T15:54:51.6637791+03:00 0HL952LH0LD33:00000007 [ERR] An unhandled exception has occurred: Object reference not set to an instance of an object. (e9c253af)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DAL.ApplicationDbContext.UpdateAuditEntities() in F:\@ginli\IntAppTech\IntAppTech\src\DAL\ApplicationDbContext.cs:line 126
+   at DAL.ApplicationDbContext.SaveChangesAsync(CancellationToken cancellationToken) in F:\@ginli\IntAppTech\IntAppTech\src\DAL\ApplicationDbContext.cs:line 103
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.SaveChanges(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.<UpdateAsync>d__23.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Identity.UserManager`1.<UpdateUserAsync>d__171.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at DAL.Core.AccountManager.<UpdateUserAsync>d__12.MoveNext() in F:\@ginli\IntAppTech\IntAppTech\src\DAL\Core\AccountManager.cs:line 146
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IntAppTech.Controllers.AccountController.<UpdateUser>d__11.MoveNext() in F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\Controllers\AccountController.cs:line 174
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>d__6.MoveNext()
+2017-11-06T15:54:51.6698108+03:00 0HL952LH0LD33:00000007 [INF] Request finished in 440.677ms 500 application/json (791a596a)
+2017-11-06T15:54:58.8135028+03:00 0HL952LH0LD33:00000008 [INF] Request starting HTTP/1.1 PUT http://localhost:5000/api/account/users/ef7b5b8c-dd33-4fd1-ae79-4d268575f885 application/json 474 (ca22a1cb)
+2017-11-06T15:54:58.8136090+03:00 0HL952LH0LD33:00000008 [INF] Policy execution successful. (0204925d)
+2017-11-06T15:54:58.8143489+03:00 0HL952LH0LD33:00000008 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:54:58.8146342+03:00 0HL952LH0LD33:00000008 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:58.8165955+03:00 0HL952LH0LD33:00000008 [INF] Executing action method "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" with arguments (["ef7b5b8c-dd33-4fd1-ae79-4d268575f885", "IntAppTech.ViewModels.UserEditViewModel"]) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:54:58.8172401+03:00 0HL952LH0LD33:00000008 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:54:58.8269846+03:00 0HL952LH0LD33:00000008 [INF] Executed DbCommand ("7"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:54:58.8351783+03:00 0HL952LH0LD33:00000008 [INF] Executed DbCommand ("6"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T15:54:58.8358582+03:00 0HL952LH0LD33:00000008 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:58.8359434+03:00 0HL952LH0LD33:00000008 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:54:58.8431964+03:00 0HL952LH0LD33:00000008 [INF] Executed DbCommand ("5"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2017-11-06T15:54:58.8483830+03:00 0HL952LH0LD33:00000008 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2017-11-06T15:54:58.8519756+03:00 0HL952LH0LD33:00000008 [INF] Executed DbCommand ("1"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:54:58.8548868+03:00 0HL952LH0LD33:00000008 [INF] Executed action "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" in 40.293ms (afa2e885)
+2017-11-06T15:54:59.0720791+03:00 0HL952LH0LD33:00000008 [ERR] An unhandled exception has occurred: Object reference not set to an instance of an object. (e9c253af)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DAL.ApplicationDbContext.UpdateAuditEntities() in F:\@ginli\IntAppTech\IntAppTech\src\DAL\ApplicationDbContext.cs:line 126
+   at DAL.ApplicationDbContext.SaveChangesAsync(CancellationToken cancellationToken) in F:\@ginli\IntAppTech\IntAppTech\src\DAL\ApplicationDbContext.cs:line 103
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.SaveChanges(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.<UpdateAsync>d__23.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Identity.UserManager`1.<UpdateUserAsync>d__171.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at DAL.Core.AccountManager.<UpdateUserAsync>d__12.MoveNext() in F:\@ginli\IntAppTech\IntAppTech\src\DAL\Core\AccountManager.cs:line 146
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IntAppTech.Controllers.AccountController.<UpdateUser>d__11.MoveNext() in F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\Controllers\AccountController.cs:line 174
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>d__6.MoveNext()
+2017-11-06T15:54:59.0726692+03:00 0HL952LH0LD33:00000008 [INF] Request finished in 259.2173ms 500 application/json (791a596a)
+2017-11-06T15:56:49.1542417+03:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:56:49.3860628+03:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T15:56:49.3908701+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T15:56:49.3963029+03:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-06T15:56:49.4134307+03:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2017-11-06T15:56:49.5784251+03:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T15:56:49.6007134+03:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppCustomers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T15:56:52.0840276+03:00 0HL952NCRCKKN:00000001 [INF] Request starting HTTP/1.1 PUT http://localhost:5000/api/account/users/ef7b5b8c-dd33-4fd1-ae79-4d268575f885 application/json 474 (ca22a1cb)
+2017-11-06T15:56:52.0925082+03:00 0HL952NCRCKKN:00000001 [INF] Policy execution successful. (0204925d)
+2017-11-06T15:56:52.2370684+03:00 0HL952NCRCKKN:00000001 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:56:52.4138537+03:00 0HL952NCRCKKN:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:56:52.5002149+03:00 0HL952NCRCKKN:00000001 [INF] Executing action method "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" with arguments (["ef7b5b8c-dd33-4fd1-ae79-4d268575f885", "IntAppTech.ViewModels.UserEditViewModel"]) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:56:52.5081114+03:00 0HL952NCRCKKN:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:56:52.6083328+03:00 0HL952NCRCKKN:00000001 [INF] Executed DbCommand ("45"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:56:52.7005067+03:00 0HL952NCRCKKN:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T15:56:52.7044694+03:00 0HL952NCRCKKN:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:56:52.7066262+03:00 0HL952NCRCKKN:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:56:52.7527524+03:00 0HL952NCRCKKN:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2017-11-06T15:56:52.7720242+03:00 0HL952NCRCKKN:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2017-11-06T15:56:52.8184553+03:00 0HL952NCRCKKN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:56:52.8242125+03:00 0HL952NCRCKKN:00000001 [INF] Executed action "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" in 416.6845ms (afa2e885)
+2017-11-06T15:56:53.1071867+03:00 0HL952NCRCKKN:00000001 [ERR] An unhandled exception has occurred: Object reference not set to an instance of an object. (e9c253af)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DAL.ApplicationDbContext.UpdateAuditEntities() in F:\@ginli\IntAppTech\IntAppTech\src\DAL\ApplicationDbContext.cs:line 126
+   at DAL.ApplicationDbContext.SaveChangesAsync(CancellationToken cancellationToken) in F:\@ginli\IntAppTech\IntAppTech\src\DAL\ApplicationDbContext.cs:line 103
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.SaveChanges(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.<UpdateAsync>d__23.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Identity.UserManager`1.<UpdateUserAsync>d__171.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at DAL.Core.AccountManager.<UpdateUserAsync>d__12.MoveNext() in F:\@ginli\IntAppTech\IntAppTech\src\DAL\Core\AccountManager.cs:line 146
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IntAppTech.Controllers.AccountController.<UpdateUser>d__11.MoveNext() in F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\Controllers\AccountController.cs:line 174
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>d__6.MoveNext()
+2017-11-06T15:56:53.1247425+03:00 0HL952NCRCKKN:00000001 [INF] Request finished in 1043.527ms 500 application/json (791a596a)
+2017-11-06T15:58:14.6228174+03:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:58:14.8223774+03:00  [INF] Executed DbCommand ("25"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T15:58:14.8254645+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T15:58:14.8294744+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-06T15:58:14.8452265+03:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2017-11-06T15:58:14.9641018+03:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T15:58:14.9812625+03:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppCustomers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T15:58:33.3682554+03:00 0HL952OB1HMTJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/__webpack_hmr   (ca22a1cb)
+2017-11-06T15:58:37.1235314+03:00 0HL952OB1HMTK:00000001 [INF] Request starting HTTP/1.1 PUT http://localhost:5000/api/account/users/ef584bd9-a3af-445d-9310-ed2270b725c4 application/json 456 (ca22a1cb)
+2017-11-06T15:58:37.1249611+03:00 0HL952OB1HMTK:00000001 [INF] Policy execution successful. (0204925d)
+2017-11-06T15:58:37.2767687+03:00 0HL952OB1HMTK:00000001 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:58:37.4590474+03:00 0HL952OB1HMTK:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:37.5629564+03:00 0HL952OB1HMTK:00000001 [INF] Executing action method "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" with arguments (["ef584bd9-a3af-445d-9310-ed2270b725c4", "IntAppTech.ViewModels.UserEditViewModel"]) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:58:37.5711166+03:00 0HL952OB1HMTK:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:58:37.6584617+03:00 0HL952OB1HMTK:00000001 [INF] Executed DbCommand ("37"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:58:37.7412508+03:00 0HL952OB1HMTK:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T15:58:37.7446136+03:00 0HL952OB1HMTK:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:37.7452551+03:00 0HL952OB1HMTK:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:37.7873796+03:00 0HL952OB1HMTK:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2017-11-06T15:58:37.8036859+03:00 0HL952OB1HMTK:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2017-11-06T15:58:37.8810992+03:00 0HL952OB1HMTK:00000001 [INF] Executed DbCommand ("11"ms) [Parameters=["@p20='?' (Size = 450), @p0='?', @p1='?' (Size = 4000), @p21='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?', @p5='?' (Size = 4000), @p6='?', @p7='?' (Size = 4000), @p8='?', @p9='?', @p10='?' (Size = 256), @p11='?' (Size = 256), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?', @p15='?' (Size = 4000), @p16='?', @p17='?' (Size = 4000), @p18='?', @p19='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Configuration] = @p2, [Email] = @p3, [EmailConfirmed] = @p4, [FullName] = @p5, [IsEnabled] = @p6, [JobTitle] = @p7, [LockoutEnabled] = @p8, [LockoutEnd] = @p9, [NormalizedEmail] = @p10, [NormalizedUserName] = @p11, [PasswordHash] = @p12, [PhoneNumber] = @p13, [PhoneNumberConfirmed] = @p14, [SecurityStamp] = @p15, [TwoFactorEnabled] = @p16, [UpdatedBy] = @p17, [UpdatedDate] = @p18, [UserName] = @p19
+WHERE [Id] = @p20 AND [ConcurrencyStamp] = @p21;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2017-11-06T15:58:37.8891640+03:00 0HL952OB1HMTK:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T15:58:37.8945092+03:00 0HL952OB1HMTK:00000001 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-11-06T15:58:37.8986930+03:00 0HL952OB1HMTK:00000001 [INF] Executed action "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" in 446.9786ms (afa2e885)
+2017-11-06T15:58:37.9047986+03:00 0HL952OB1HMTK:00000001 [INF] Request finished in 780.8479ms 204  (791a596a)
+2017-11-06T15:58:37.9150132+03:00 0HL952OB1HMTK:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/token application/x-www-form-urlencoded 2370 (ca22a1cb)
+2017-11-06T15:58:37.9151764+03:00 0HL952OB1HMTK:00000002 [INF] Policy execution successful. (0204925d)
+2017-11-06T15:58:38.0092310+03:00 0HL952OB1HMTK:00000002 [INF] The token request was successfully extracted from the HTTP request: "{
+  \"refresh_token\": \"[removed for security reasons]\",
+  \"grant_type\": \"refresh_token\",
+  \"scope\": \"openid email phone profile offline_access roles\"
+}". (ebc01284)
+2017-11-06T15:58:38.0269053+03:00 0HL952OB1HMTK:00000002 [INF] The token request was successfully validated. (d7e51e65)
+2017-11-06T15:58:38.0677013+03:00 0HL952OB1HMTK:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:58:38.0887143+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__key_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [token].[Id], [token].[ApplicationId], [token].[AuthorizationId], [token].[Ciphertext], [token].[End], [token].[Hash], [token].[Start], [token].[Status], [token].[Subject], [token].[Type]
+FROM [OpenIddictTokens] AS [token]
+WHERE [token].[Id] = @__key_0" (0723d8ff)
+2017-11-06T15:58:38.1379149+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=["@p9='?' (Size = 450), @p0='?' (Size = 450), @p1='?' (Size = 450), @p2='?' (Size = 4000), @p3='?', @p4='?' (Size = 450), @p5='?', @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [OpenIddictTokens] SET [ApplicationId] = @p0, [AuthorizationId] = @p1, [Ciphertext] = @p2, [End] = @p3, [Hash] = @p4, [Start] = @p5, [Status] = @p6, [Subject] = @p7, [Type] = @p8
+WHERE [Id] = @p9;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2017-11-06T15:58:38.1577877+03:00 0HL952OB1HMTK:00000002 [INF] Executing action method "IntAppTech.Controllers.AuthorizationController.Exchange (IntAppTech)" with arguments (["{
+  \"refresh_token\": \"[removed for security reasons]\",
+  \"grant_type\": \"refresh_token\",
+  \"scope\": \"openid email phone profile offline_access roles\"
+}"]) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:58:38.1722548+03:00 0HL952OB1HMTK:00000002 [INF] AuthenticationScheme: "ASOS" was successfully authenticated. (1805f3b3)
+2017-11-06T15:58:38.1747077+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:58:38.2078811+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2017-11-06T15:58:38.2121286+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T15:58:38.2254179+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2017-11-06T15:58:38.2548494+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2017-11-06T15:58:38.2574968+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2017-11-06T15:58:38.2598985+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2017-11-06T15:58:38.2616699+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2017-11-06T15:58:38.2628081+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2017-11-06T15:58:38.2741582+03:00 0HL952OB1HMTK:00000002 [INF] Executing SignInResult with authentication scheme ("ASOS") and the following principal: "System.Security.Claims.ClaimsPrincipal". (f8bf0a82)
+2017-11-06T15:58:38.3843047+03:00 0HL952OB1HMTK:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@p0='?' (Size = 450), @p1='?' (Size = 450), @p2='?' (Size = 450), @p3='?' (Size = 4000), @p4='?', @p5='?' (Size = 450), @p6='?', @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [OpenIddictTokens] ([Id], [ApplicationId], [AuthorizationId], [Ciphertext], [End], [Hash], [Start], [Status], [Subject], [Type])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);" (0723d8ff)
+2017-11-06T15:58:38.4257062+03:00 0HL952OB1HMTK:00000002 [INF] The token response was successfully returned: "{
+  \"token_type\": \"Bearer\",
+  \"access_token\": \"[removed for security reasons]\",
+  \"expires_in\": 3600,
+  \"refresh_token\": \"[removed for security reasons]\",
+  \"id_token\": \"[removed for security reasons]\"
+}". (12d98310)
+2017-11-06T15:58:38.4432312+03:00 0HL952OB1HMTK:00000002 [INF] Executed action "IntAppTech.Controllers.AuthorizationController.Exchange (IntAppTech)" in 294.0457ms (afa2e885)
+2017-11-06T15:58:38.4435576+03:00 0HL952OB1HMTK:00000002 [INF] Request finished in 528.5639ms 200 application/json;charset=UTF-8 (791a596a)
+2017-11-06T15:58:38.4593502+03:00 0HL952OB1HMTK:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/account/users/me   (ca22a1cb)
+2017-11-06T15:58:38.4605115+03:00 0HL952OB1HMTK:00000003 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:58:38.4605248+03:00 0HL952OB1HMTL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/account/roles   (ca22a1cb)
+2017-11-06T15:58:38.4616148+03:00 0HL952OB1HMTL:00000001 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:58:38.4690515+03:00 0HL952OB1HMTK:00000003 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:38.4695186+03:00 0HL952OB1HMTK:00000003 [INF] Executing action method "IntAppTech.Controllers.AccountController.GetCurrentUser (IntAppTech)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:58:38.4698767+03:00 0HL952OB1HMTL:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:38.4711422+03:00 0HL952OB1HMTL:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:38.4716071+03:00 0HL952OB1HMTL:00000001 [INF] Executing action method "IntAppTech.Controllers.AccountController.GetRoles (IntAppTech)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:58:38.4766643+03:00 0HL952OB1HMTK:00000003 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:58:38.4781094+03:00 0HL952OB1HMTK:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2017-11-06T15:58:38.4790552+03:00 0HL952OB1HMTK:00000003 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:38.4798383+03:00 0HL952OB1HMTL:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:58:38.4808045+03:00 0HL952OB1HMTK:00000003 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:38.5429009+03:00 0HL952OB1HMTK:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[Id] = @__userId_0
+ORDER BY [u].[Id]" (0723d8ff)
+2017-11-06T15:58:38.5477995+03:00 0HL952OB1HMTL:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedBy], [r].[CreatedDate], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[UpdatedBy], [r].[UpdatedDate]
+FROM [AspNetRoles] AS [r]
+ORDER BY [r].[Name], [r].[Id]" (0723d8ff)
+2017-11-06T15:58:38.5535634+03:00 0HL952OB1HMTK:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Roles].[UserId], [u.Roles].[RoleId]
+FROM [AspNetUserRoles] AS [u.Roles]
+INNER JOIN (
+    SELECT TOP(1) [u0].[Id]
+    FROM [AspNetUsers] AS [u0]
+    WHERE [u0].[Id] = @__userId_0
+    ORDER BY [u0].[Id]
+) AS [t] ON [u.Roles].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2017-11-06T15:58:38.5608390+03:00 0HL952OB1HMTL:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r.Claims].[Id], [r.Claims].[ClaimType], [r.Claims].[ClaimValue], [r.Claims].[RoleId]
+FROM [AspNetRoleClaims] AS [r.Claims]
+INNER JOIN (
+    SELECT [r0].[Id], [r0].[Name]
+    FROM [AspNetRoles] AS [r0]
+) AS [t] ON [r.Claims].[RoleId] = [t].[Id]
+ORDER BY [t].[Name], [t].[Id]" (0723d8ff)
+2017-11-06T15:58:38.5757869+03:00 0HL952OB1HMTK:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r].[Name]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[Id] IN (N'5a7050e2-44e4-402a-a102-c8afdf6b712c', N'8ee8e0a7-7641-4d76-acb7-9bef9c5434f1', N'df48ee34-22b4-406e-b4f0-6f92609caaa7')" (0723d8ff)
+2017-11-06T15:58:38.5920183+03:00 0HL952OB1HMTL:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r.Users].[UserId], [r.Users].[RoleId]
+FROM [AspNetUserRoles] AS [r.Users]
+INNER JOIN (
+    SELECT [r1].[Id], [r1].[Name]
+    FROM [AspNetRoles] AS [r1]
+) AS [t0] ON [r.Users].[RoleId] = [t0].[Id]
+ORDER BY [t0].[Name], [t0].[Id]" (0723d8ff)
+2017-11-06T15:58:38.5980762+03:00 0HL952OB1HMTK:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2017-11-06T15:58:38.6063787+03:00 0HL952OB1HMTK:00000003 [INF] Executed action "IntAppTech.Controllers.AccountController.GetCurrentUser (IntAppTech)" in 138.1035ms (afa2e885)
+2017-11-06T15:58:38.6075620+03:00 0HL952OB1HMTK:00000003 [INF] Request finished in 148.2529ms 200 application/json; charset=utf-8 (791a596a)
+2017-11-06T15:58:38.6283955+03:00 0HL952OB1HMTL:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2017-11-06T15:58:38.6355880+03:00 0HL952OB1HMTL:00000001 [INF] Executed action "IntAppTech.Controllers.AccountController.GetRoles (IntAppTech)" in 165.7569ms (afa2e885)
+2017-11-06T15:58:38.6358271+03:00 0HL952OB1HMTL:00000001 [INF] Request finished in 175.3289ms 200 application/json; charset=utf-8 (791a596a)
+2017-11-06T15:58:41.7281580+03:00 0HL952OB1HMTL:00000002 [INF] Request starting HTTP/1.1 PUT http://localhost:5000/api/account/users/ef7b5b8c-dd33-4fd1-ae79-4d268575f885 application/json 474 (ca22a1cb)
+2017-11-06T15:58:41.7282616+03:00 0HL952OB1HMTL:00000002 [INF] Policy execution successful. (0204925d)
+2017-11-06T15:58:41.7289196+03:00 0HL952OB1HMTL:00000002 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T15:58:41.7293932+03:00 0HL952OB1HMTL:00000002 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:41.7305571+03:00 0HL952OB1HMTL:00000002 [INF] Executing action method "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" with arguments (["ef7b5b8c-dd33-4fd1-ae79-4d268575f885", "IntAppTech.ViewModels.UserEditViewModel"]) - ModelState is Valid (ba7f4ac2)
+2017-11-06T15:58:41.7309979+03:00 0HL952OB1HMTL:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T15:58:41.7328981+03:00 0HL952OB1HMTL:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T15:58:41.7344212+03:00 0HL952OB1HMTL:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T15:58:41.7346378+03:00 0HL952OB1HMTL:00000002 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:41.7347122+03:00 0HL952OB1HMTL:00000002 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T15:58:41.7361254+03:00 0HL952OB1HMTL:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2017-11-06T15:58:41.7381806+03:00 0HL952OB1HMTL:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2017-11-06T15:58:41.7416009+03:00 0HL952OB1HMTL:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@p20='?' (Size = 450), @p0='?', @p1='?' (Size = 4000), @p21='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?', @p5='?' (Size = 4000), @p6='?', @p7='?' (Size = 4000), @p8='?', @p9='?', @p10='?' (Size = 256), @p11='?' (Size = 256), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?', @p15='?' (Size = 4000), @p16='?', @p17='?' (Size = 4000), @p18='?', @p19='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Configuration] = @p2, [Email] = @p3, [EmailConfirmed] = @p4, [FullName] = @p5, [IsEnabled] = @p6, [JobTitle] = @p7, [LockoutEnabled] = @p8, [LockoutEnd] = @p9, [NormalizedEmail] = @p10, [NormalizedUserName] = @p11, [PasswordHash] = @p12, [PhoneNumber] = @p13, [PhoneNumberConfirmed] = @p14, [SecurityStamp] = @p15, [TwoFactorEnabled] = @p16, [UpdatedBy] = @p17, [UpdatedDate] = @p18, [UserName] = @p19
+WHERE [Id] = @p20 AND [ConcurrencyStamp] = @p21;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2017-11-06T15:58:41.7440846+03:00 0HL952OB1HMTL:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T15:58:41.7445372+03:00 0HL952OB1HMTL:00000002 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-11-06T15:58:41.7446963+03:00 0HL952OB1HMTL:00000002 [INF] Executed action "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" in 15.3779ms (afa2e885)
+2017-11-06T15:58:41.7449503+03:00 0HL952OB1HMTL:00000002 [INF] Request finished in 16.8692ms 204  (791a596a)
+2017-11-06T15:59:01.4514664+03:00  [INF] webpack built ee4c7fc6de188ec5190e in 47599ms (8d119556)
+2017-11-06T16:02:31.2114441+03:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T16:02:31.7338094+03:00  [INF] Executed DbCommand ("247"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T16:02:31.7382124+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T16:02:31.7534185+03:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-06T16:02:31.7719740+03:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2017-11-06T16:02:31.9569001+03:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T16:02:31.9821888+03:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppCustomers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T16:02:45.0262813+03:00 0HL952QM1ERA8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/__webpack_hmr   (ca22a1cb)
+2017-11-06T16:03:18.4567187+03:00  [INF] webpack built ee4c7fc6de188ec5190e in 48103ms (8989f32c)
+2017-11-06T16:03:29.5778129+03:00 0HL952QM1ERA9:00000001 [INF] Request starting HTTP/1.1 PUT http://localhost:5000/api/account/users/ef584bd9-a3af-445d-9310-ed2270b725c4 application/json 456 (ca22a1cb)
+2017-11-06T16:03:29.5803561+03:00 0HL952QM1ERA9:00000001 [INF] Policy execution successful. (0204925d)
+2017-11-06T16:03:29.7519534+03:00 0HL952QM1ERA9:00000001 [INF] AuthenticationScheme: "Bearer" was successfully authenticated. (1805f3b3)
+2017-11-06T16:03:29.9529985+03:00 0HL952QM1ERA9:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T16:03:30.0333455+03:00 0HL952QM1ERA9:00000001 [INF] Executing action method "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" with arguments (["ef584bd9-a3af-445d-9310-ed2270b725c4", "IntAppTech.ViewModels.UserEditViewModel"]) - ModelState is Valid (ba7f4ac2)
+2017-11-06T16:03:30.0413057+03:00 0HL952QM1ERA9:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T16:03:30.1255410+03:00 0HL952QM1ERA9:00000001 [INF] Executed DbCommand ("40"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Configuration], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[IsEnabled], [e].[JobTitle], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UpdatedBy], [e].[UpdatedDate], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2017-11-06T16:03:30.2137989+03:00 0HL952QM1ERA9:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2017-11-06T16:03:30.2187833+03:00 0HL952QM1ERA9:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T16:03:30.2193781+03:00 0HL952QM1ERA9:00000001 [INF] Authorization was successful for user: "SECGINLI". (d7eb274a)
+2017-11-06T16:03:30.2623693+03:00 0HL952QM1ERA9:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2017-11-06T16:03:30.2782158+03:00 0HL952QM1ERA9:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Configuration], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[IsEnabled], [u].[JobTitle], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UpdatedBy], [u].[UpdatedDate], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2017-11-06T16:03:30.3055926+03:00 0HL952QM1ERA9:00000001 [WRN] Query: '"(from ApplicationUser <generated>_1 in DbSet<ApplicationUser> select [<generated>_1]).First()"' uses First/FirstOrDefault operation without OrderBy and filter which may lead to unpredictable results. (e99f2322)
+2017-11-06T16:03:30.3204404+03:00 0HL952QM1ERA9:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Configuration], [a].[CreatedBy], [a].[CreatedDate], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsEnabled], [a].[JobTitle], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedBy], [a].[UpdatedDate], [a].[UserName]
+FROM [AspNetUsers] AS [a]" (0723d8ff)
+2017-11-06T16:03:30.3308705+03:00 0HL952QM1ERA9:00000001 [INF] Executed action "IntAppTech.Controllers.AccountController.UpdateUser (IntAppTech)" in 384.1454ms (afa2e885)
+2017-11-06T16:03:30.6735497+03:00 0HL952QM1ERA9:00000001 [ERR] An unhandled exception has occurred: Collection was modified; enumeration operation may not execute. (eea65bca)
+System.InvalidOperationException: Collection was modified; enumeration operation may not execute.
+   at System.ThrowHelper.ThrowInvalidOperationException_InvalidOperation_EnumFailedVersion()
+   at System.Collections.Generic.Dictionary`2.ValueCollection.Enumerator.MoveNext()
+   at System.Linq.Enumerable.ConcatIterator`1.MoveNext()
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   at System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   at DAL.ApplicationDbContext.UpdateAuditEntities() in F:\@ginli\IntAppTech\IntAppTech\src\DAL\ApplicationDbContext.cs:line 121
+   at DAL.ApplicationDbContext.SaveChangesAsync(CancellationToken cancellationToken) in F:\@ginli\IntAppTech\IntAppTech\src\DAL\ApplicationDbContext.cs:line 103
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.SaveChanges(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.<UpdateAsync>d__23.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Identity.UserManager`1.<UpdateUserAsync>d__171.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at DAL.Core.AccountManager.<UpdateUserAsync>d__12.MoveNext() in F:\@ginli\IntAppTech\IntAppTech\src\DAL\Core\AccountManager.cs:line 146
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IntAppTech.Controllers.AccountController.<UpdateUser>d__11.MoveNext() in F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\Controllers\AccountController.cs:line 174
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>d__6.MoveNext()
+2017-11-06T16:03:30.6857476+03:00 0HL952QM1ERA9:00000001 [INF] Request finished in 1107.2172ms 500 application/json (791a596a)
+2017-11-06T16:08:54.1639882+03:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=IntAppTech " (9958f5bb)
+2017-11-06T16:08:54.3656404+03:00  [INF] Executed DbCommand ("25"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T16:08:54.3691443+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-06T16:08:54.3731824+03:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-06T16:08:54.3906612+03:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2017-11-06T16:08:54.5097838+03:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T16:08:54.5331533+03:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppCustomers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2017-11-06T16:09:01.5307708+03:00 0HL952U686UPD:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5000/dist/__webpack_hmr   (ca22a1cb)
+2017-11-06T16:09:40.3165461+03:00  [INF] webpack built ee4c7fc6de188ec5190e in 47019ms (96e14840)

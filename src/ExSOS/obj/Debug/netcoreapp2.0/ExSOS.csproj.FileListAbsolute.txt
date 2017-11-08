@@ -1,0 +1,12 @@
+F:\@ginli\ExSOS\ExSOS\src\exsos\bin\Debug\netcoreapp2.0\ExSOS.deps.json
+F:\@ginli\ExSOS\ExSOS\src\exsos\bin\Debug\netcoreapp2.0\ExSOS.runtimeconfig.json
+F:\@ginli\ExSOS\ExSOS\src\exsos\bin\Debug\netcoreapp2.0\ExSOS.runtimeconfig.dev.json
+F:\@ginli\ExSOS\ExSOS\src\exsos\bin\Debug\netcoreapp2.0\ExSOS.dll
+F:\@ginli\ExSOS\ExSOS\src\exsos\bin\Debug\netcoreapp2.0\ExSOS.pdb
+F:\@ginli\ExSOS\ExSOS\src\exsos\bin\Debug\netcoreapp2.0\DAL.dll
+F:\@ginli\ExSOS\ExSOS\src\exsos\bin\Debug\netcoreapp2.0\DAL.pdb
+F:\@ginli\ExSOS\ExSOS\src\exsos\obj\Debug\netcoreapp2.0\ExSOS.csproj.CoreCompileInputs.cache
+F:\@ginli\ExSOS\ExSOS\src\exsos\obj\Debug\netcoreapp2.0\ExSOS.AssemblyInfoInputs.cache
+F:\@ginli\ExSOS\ExSOS\src\exsos\obj\Debug\netcoreapp2.0\ExSOS.AssemblyInfo.cs
+F:\@ginli\ExSOS\ExSOS\src\exsos\obj\Debug\netcoreapp2.0\ExSOS.dll
+F:\@ginli\ExSOS\ExSOS\src\exsos\obj\Debug\netcoreapp2.0\ExSOS.pdb

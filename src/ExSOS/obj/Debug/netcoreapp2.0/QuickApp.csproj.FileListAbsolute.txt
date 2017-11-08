@@ -1,0 +1,12 @@
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\bin\Debug\netcoreapp2.0\IntAppTech.deps.json
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\bin\Debug\netcoreapp2.0\IntAppTech.runtimeconfig.json
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\bin\Debug\netcoreapp2.0\IntAppTech.runtimeconfig.dev.json
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\bin\Debug\netcoreapp2.0\IntAppTech.dll
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\bin\Debug\netcoreapp2.0\IntAppTech.pdb
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\bin\Debug\netcoreapp2.0\DAL.dll
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\bin\Debug\netcoreapp2.0\DAL.pdb
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\obj\Debug\netcoreapp2.0\IntAppTech.csproj.CoreCompileInputs.cache
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\obj\Debug\netcoreapp2.0\IntAppTech.AssemblyInfoInputs.cache
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\obj\Debug\netcoreapp2.0\IntAppTech.AssemblyInfo.cs
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\obj\Debug\netcoreapp2.0\IntAppTech.dll
+F:\@ginli\IntAppTech\IntAppTech\src\IntAppTech\obj\Debug\netcoreapp2.0\IntAppTech.pdb

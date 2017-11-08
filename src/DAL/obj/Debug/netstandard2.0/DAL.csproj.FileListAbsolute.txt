@@ -1,0 +1,16 @@
+F:\@ginli\IntAppTech\IntAppTech\src\DAL\bin\Debug\netstandard2.0\DAL.deps.json
+F:\@ginli\IntAppTech\IntAppTech\src\DAL\bin\Debug\netstandard2.0\DAL.dll
+F:\@ginli\IntAppTech\IntAppTech\src\DAL\bin\Debug\netstandard2.0\DAL.pdb
+F:\@ginli\IntAppTech\IntAppTech\src\DAL\obj\Debug\netstandard2.0\DAL.csproj.CoreCompileInputs.cache
+F:\@ginli\IntAppTech\IntAppTech\src\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfoInputs.cache
+F:\@ginli\IntAppTech\IntAppTech\src\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
+F:\@ginli\IntAppTech\IntAppTech\src\DAL\obj\Debug\netstandard2.0\DAL.dll
+F:\@ginli\IntAppTech\IntAppTech\src\DAL\obj\Debug\netstandard2.0\DAL.pdb
+F:\@ginli\ExSOS\ExSOS\src\DAL\bin\Debug\netstandard2.0\DAL.deps.json
+F:\@ginli\ExSOS\ExSOS\src\DAL\bin\Debug\netstandard2.0\DAL.dll
+F:\@ginli\ExSOS\ExSOS\src\DAL\bin\Debug\netstandard2.0\DAL.pdb
+F:\@ginli\ExSOS\ExSOS\src\DAL\obj\Debug\netstandard2.0\DAL.csproj.CoreCompileInputs.cache
+F:\@ginli\ExSOS\ExSOS\src\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfoInputs.cache
+F:\@ginli\ExSOS\ExSOS\src\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
+F:\@ginli\ExSOS\ExSOS\src\DAL\obj\Debug\netstandard2.0\DAL.dll
+F:\@ginli\ExSOS\ExSOS\src\DAL\obj\Debug\netstandard2.0\DAL.pdb
