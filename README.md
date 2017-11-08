@@ -1,2 +1,2 @@
-# ExSOS - Examınatıon servıces organızatıon systems
+# ExSOS - Examination services organization systems
 
